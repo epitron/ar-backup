@@ -1,10 +1,10 @@
-=ActiveRecord-backup
+w=ActiveRecord-backup
 
 Using rake tasks, dump your schema and data into yml files. One folder gets created per SVN revision. You can then simply load any previous data using rake.
 
 prerequisite: Your project must be under SVN.
 
-==Usage:
+== Usage:
 
 rake backup:db:dump               # create a backup folder containing your db schema and content data (see backup/{env}/build_{build number})
 rake backup:db:extract_content    # Create YAML fixtures from your DB content
@@ -12,13 +12,25 @@ rake backup:db:extract_schema     # Dump the db schema
 rake backup:db:load               # load your backed up data from a previous build. rake backup:db:load BUILD=1182 or rake backup:db:load BUILD=1182 DUMP_ENV=production
 
 
-==Example
+== Examples
 
-    rake backup:db:dump
+Core commands:
 
-    rake backup:db:load BUILD=2547
+    rake db:backup            # dump schema.rb and fixtures/*.yml
+    rake db:load              # load the latest    schema and content
+    rake db:load:schema       # load the latest    schema
+    rake db:load:content      # load the latest    content
+    rake db:load BUILD=2547   # load build 2547's  schema and content
 
-==Capistrano 2 usage example   
+And an <b>extra special</b> command:
+    
+    rake db:reload            # A megatask that:
+                              #   - drops the db,
+                              #   - executes the migrations, and 
+                              #   - loads the latest schema and content
+    
+
+== Capistrano 2 usage example   
 
 (you first need to create a backup folder) 
 
@@ -46,7 +58,16 @@ rake backup:db:load               # load your backed up data from a previous bui
       end
     end
 
-==Contributors
- Cyril Mougel : cyril.mougel@gmail.com (ar_backup windows compatible and the revision number is parsed in a more efficient way)
+== "The Authors"
 
-Copyright (c) 2007 Matt Aimonetti, released under the MIT license
+  Matt Aimonetti, Cyril Mougel (cyril.mougel@gmail.com)
+   - original AR Backup plugin
+  Chris Gahan (http://github.com/epitron)
+   - rails 3.1 compatability
+   - git support
+   - better task names
+   - special extra tasks
+
+== Copyright Notice
+
+Copyright (c) 2007-2011 "The Authors", released under the MIT license
