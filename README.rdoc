@@ -6,10 +6,10 @@ prerequisite: Your project must be under SVN.
 
 ==Usage:
 
-rake backup:db:dump               # create a backup folder containing your db schema and content data (see backup/{env}/build_{build number})
-rake backup:db:extract_content    # Create YAML fixtures from your DB content
-rake backup:db:extract_schema     # Dump the db schema
-rake backup:db:load               # load your backed up data from a previous build. rake backup:db:load BUILD=1182 or rake backup:db:load BUILD=1182 DUMP_ENV=production
+    rake backup:db:dump               # create a backup folder containing your db schema and content data (see backup/{env}/build_{build number})
+    rake backup:db:extract_content    # Create YAML fixtures from your DB content
+    rake backup:db:extract_schema     # Dump the db schema
+    rake backup:db:load               # load your backed up data from a previous build. rake backup:db:load BUILD=1182 or rake backup:db:load BUILD=1182 DUMP_ENV=production
 
 
 ==Example
